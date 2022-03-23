@@ -1,0 +1,201 @@
+/* General syle & Typography */
+:root {
+  /* Global variables and important things goes here ↓*/
+  --screen-max-width: 1140px;
+  --block-vertical-space: 5rem;
+  --selection-color: #daf4fb;
+}
+
+::placeholder {
+  color: lightgray;
+  font-size: calc(13px + (24 - 13) * ((100vw - 300px) / (1600 - 300)));
+}
+
+::selection {
+  background-color: var(--selection-color);
+  color: #222;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 150ms ease-in-out;
+}
+
+/** To prevent :horizontal scrolling */
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  transition: initial; /* To make page width responseve without laging */
+}
+
+html {
+  font-size: 62.5%;
+} /*10px*/
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem; /* minimum font for any typo */
+  line-height: 1.2;
+}
+
+/* Typo Responsiveness */
+/* ANCHOR: edit your default font-size from here */
+@media screen and (min-width: 320px) {
+  /* I used this equation to responsive font-size */
+  /*  f  font-size: calc([minimum size] + ([maximum size] - [minimum size]) *
+   ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));*/
+  body {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  }
+}
+
+/* Typo Max font-size */
+@media screen and (min-width: 1000px) {
+  body {
+    font-size: 22px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 3rem 0 1.38rem;
+  font-size: 35px; /* minimum font-size */
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 4.068rem;
+}
+
+h2 {
+  font-size: 3.715rem;
+}
+
+h3 {
+  font-size: 3.152rem;
+}
+
+h4 {
+  font-size: 2.841rem;
+}
+
+h5 {
+  font-size: 2.553rem;
+}
+
+/* ///////////////////////////////////////////////////////*/
+/* ////////////////////////    End      /////////////////*/
+/* /////////////////////////////////////////////////////*/
+
+.proper-line-length {
+  width: 55ch;
+}
+
+small,
+.small-txt {
+  font-size: 0.9rem;
+}
+
+/* For desktops */
+@media only screen and (min-width: 768px) {
+  .proper-line-length {
+    width: 65ch;
+  }
+
+  ::placeholder {
+    color: lightgray;
+    font-size: 1.2rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    line-height: 1.3;
+  }
+  /* ANCHOR: edit your heading font size heare only to edit all excpt mobile it's perfect */
+  /*Starting from tablet mode*/
+  h1 {
+    margin-top: 0;
+    font-size: 4.768rem;
+  }
+
+  h2 {
+    font-size: 3.815rem;
+  }
+
+  h3 {
+    font-size: 3.052rem;
+  }
+
+  h4 {
+    font-size: 2.441rem;
+  }
+
+  h5 {
+    font-size: 1.953rem;
+  }
+
+  small,
+  .text_small {
+    font-size: 1rem;
+  }
+}
+
+/**basics for all */
+/* Blocks */
+
+/* to make imgs responsive but not bigger than it's origenal size */
+img,
+embed,
+video,
+object {
+  max-width: 100%;
+  display: inline-block;
+}
+
+/* some utility stuff */
+.block-container {
+  max-width: var(--screen-max-width);
+  margin: var(--block-vertical-space) auto; /* To center it */
+}
+
+.block--dark {
+  background-color: #222831;
+}
+
+.block--dark h1,
+.block--dark h2,
+.block--dark h3,
+.block--dark h4,
+.block--dark h5 {
+  color: #eee;
+}
+
+.block--dark p {
+  color: #bbb;
+}
+/* Backgrounds */
+.bg--white {
+  background-color: #fff;
+}
+/* Text */
+.txt--dark {
+  color: #333;
+}
+
+.shdow--light {
+  box-shadow: 0 3px 5px lightgray;
+}
