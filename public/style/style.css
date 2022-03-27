@@ -81,20 +81,13 @@ body {
 /* End active state */
 
 .game-area [class*='player'] [class*='__name'] {
-  font-weight: 300;
-  font-size: clamp(20px, 4vw + 2rem, 6rem);
+  font-weight: 500;
+  font-size: clamp(20px, 4vw + 4rem, 6rem);
   white-space: nowrap;
 }
 
 .game-area [class*='player'] [class*='final-score'] {
   font-size: clamp(20px, 3vw + 1rem, 6rem);
-  margin: auto; /* to keet radius circle */
-  border: 1px solid #333;
-  border-radius: 100%;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -ms-border-radius: 100%;
-  -o-border-radius: 100%;
   margin-bottom: 14rem;
 }
 /* Active state */
@@ -162,7 +155,11 @@ body {
 
 .game-area .controllers .dice-area {
   margin: auto;
-  margin-top: 8rem;
+  transform: translateX(-13%);
+  -webkit-transform: translateX(-13%);
+  -moz-transform: translateX(-13%);
+  -ms-transform: translateX(-13%);
+  -o-transform: translateX(-13%);
 }
 .game-area .controllers .dice-area img {
   width: 100%;
@@ -337,18 +334,24 @@ body {
     -o-border-radius: 100%;
   }
 
-  .game-area [class*='player'].active [class*='__final-score']{
+  .game-area [class*='player'].active [class*='__final-score'] {
     margin-bottom: 30rem;
   }
 
-  .game-area [class*='player'].not-active [class*='__final-score']{
-    margin: 0 auto;
+  .game-area [class*='player'].not-active [class*='__final-score'] {
+    /* margin: 0 auto; */
     margin-bottom: 3rem;
     height: max-content;
   }
 
   .game-area [class*='player'] {
     overflow: hidden;
+  }
+}
+
+@media (max-width: 400px) {
+  .game-area [class*='player'] [class*='__name'] {
+    font-size: clamp(20px, 4vw + 2rem, 6rem);
   }
 }
 
@@ -366,8 +369,10 @@ body {
 @media (max-width: 500px) {
   .game-area [class*='player'] [class*='__final-score'] {
     border: none;
-    margin-left: 0;
+    text-align-last: left;
     font-size: clamp(20px, 4vw + 2rem, 5rem);
+    margin-bottom: 22rem;
+    margin-left: 0;
   }
   .game-area [class*='player'] [class*='__name'] {
     margin: 0;
