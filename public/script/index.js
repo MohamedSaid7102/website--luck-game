@@ -1,9 +1,10 @@
 // Public Vars
-const maxScore = 20;
+const maxScore = 30;
 let random = Math.floor(Math.random() * 7);
 
 // Public DOM Vars
 const maxScoreContainer = document.querySelector('.max-score');
+const headingTxt = document.querySelector('.game-header');
 const diceImage = document.getElementById('dice');
 const player1 = document.getElementsByClassName('player-1')[0];
 const player2 = document.getElementsByClassName('player-2')[0];
@@ -31,10 +32,48 @@ let notActivePlayer = document.getElementsByClassName('not-active')[0];
 let notActivePlayerCurrentScore =
   notActivePlayer.querySelector('.current-score');
 let notActivePlayerFinalScore = notActivePlayer.querySelector('.final-score');
+// Fireworks vars
+const container = document.querySelector('.fireworks-example');
+const fireworks = new Fireworks(container, {
+  rocketsPoint: 50,
+  hue: { min: 0, max: 360 },
+  delay: { min: 15, max: 30 },
+  speed: 2,
+  acceleration: 1.05,
+  friction: 0.95,
+  gravity: 1.5,
+  particles: 50,
+  trace: 3,
+  explosion: 5,
+  autoresize: true,
+  brightness: {
+    min: 50,
+    max: 80,
+    decay: { min: 0.015, max: 0.03 },
+  },
+  mouse: {
+    click: false,
+    move: false,
+    max: 3,
+  },
+  boundaries: {
+    x: 50,
+    y: 50,
+    width: container.clientWidth,
+    height: container.clientHeight,
+  },
+  sound: {
+    enable: true,
+    files: ['explosion0.mp3', 'explosion1.mp3', 'explosion2.mp3'],
+    volume: { min: 1, max: 2 },
+  },
+});
+// ******************************** //
 
 // Init function
 function gameInit() {
-  // rollingEffect();
+  rollingEffect();
+  headingTxt.innerHTML = `Play With A Friend 🎮<br />Max Score: <span class="max-score">${maxScore}</span>`;
   maxScoreContainer.textContent = maxScore; //set maximum score
   // reset all players score
   player1FinalScore.textContent =
@@ -46,7 +85,15 @@ function gameInit() {
   player1.classList.remove('not-active');
   player2.classList.add('not-active');
   player2.classList.remove('active');
+
+  fireworks.stop();
 }
+
+function gameOver(winnerName) {
+  headingTxt.textContent = `${winnerName} Won..! 🎆`;
+  fireworks.start();
+}
+
 // Adding Buttons behaviour
 rollBtn.addEventListener('click', () => {
   let rolledNumber = rollTheDice();
@@ -60,14 +107,19 @@ rollBtn.addEventListener('click', () => {
       rolledNumber + +activePlayerCurrentScore.textContent;
   }
 });
+
 holdBtn.addEventListener('click', () => {
   activePlayerFinalScore.textContent =
     +activePlayerCurrentScore.textContent + +activePlayerFinalScore.textContent;
   activePlayerCurrentScore.textContent = '0.0';
-
-  // Switch players
-  switchPlayers();
+  if (+activePlayerFinalScore.textContent >= maxScore) {
+    let winnerName = activePlayer.querySelector('.player-name').textContent;
+    gameOver(winnerName);
+  } else {
+    switchPlayers();
+  }
 });
+
 newGameBtn.addEventListener('click', () => {
   gameInit();
 });
