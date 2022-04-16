@@ -258,7 +258,7 @@ body {
 
 /* Responsiveness */
 
-@media (max-width: 750px) {
+@media (max-width: 860px) {
   .game-area {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
