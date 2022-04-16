@@ -19,6 +19,8 @@
     <meta name="theme-color" content="#333" />
   </head>
   <body>
+    <div class="fireworks-example"></div>
+
     <header>
       <h1 class="game-header text-glow">
         Play With A Friend 🎮<br />Max Score: <span class="max-score">-20</span>
@@ -26,7 +28,7 @@
     </header>
     <section class="game-area">
       <article class="player-1 active">
-        <h2 class="player1__name">Player 1</h2>
+        <h2 class="player1__name player-name">Player 1</h2>
         <p class="player1__final-score final-score">10</p>
         <p class="player1__current-score current-score">40</p>
       </article>
@@ -48,12 +50,12 @@
         </button>
       </article>
       <article class="player-2 not-active">
-        <h2 class="player2__name">Player 2</h2>
+        <h2 class="player2__name player-name">Player 2</h2>
         <p class="player2__final-score final-score">20</p>
         <p class="player2__current-score current-score">40</p>
       </article>
     </section>
-
+    <script src="../node_modules/fireworks-js/dist/fireworks.js"></script>
     <script src="./script/index.js"></script>
   </body>
 </html>
